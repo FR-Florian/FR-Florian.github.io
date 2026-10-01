@@ -1,8 +1,510 @@
 <!DOCTYPE html>
-<html>
-<head><title>Florian R.</title></head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florian R. | Finance student, M&amp;A and valuation</title>
+<meta name="description" content="Finance student aiming for a career in investment banking. Focus on M&amp;A, valuation and transactions. DCF, LBO and portfolio optimization models.">
+<meta name="theme-color" content="#0A0C10">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Florian R. | Finance student, M&amp;A and valuation">
+<meta property="og:description" content="Finance student aiming for a career in investment banking.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A0C10'/%3E%3Ctext x='16' y='22' font-size='15' font-weight='700' text-anchor='middle' fill='%236EA8FF' font-family='Arial,sans-serif'%3EFR%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+  /* ============ Tokens ============ */
+  :root {
+    --canvas: #0A0C10;
+    --surface: #12151B;
+    --ink: #F2F4F7;
+    --muted: #9AA3B2;
+    --line: rgba(255, 255, 255, 0.10);
+    --accent: #6EA8FF;
+    /* System fonts only: nothing is downloaded, nothing connects to another site. */
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  /* ============ Base ============ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--canvas); color: var(--ink); scroll-padding-top: 5rem; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body {
+    margin: 0; background: var(--canvas); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, p, dl, dd, figure, ul { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  svg { display: block; }
+  ::selection { background: var(--accent); color: var(--canvas); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 640px) { .wrap { padding: 0 32px; } }
+
+  .skip { position: absolute; left: -9999px; top: 16px; z-index: 60; background: var(--accent); color: var(--canvas); padding: 12px 20px; border-radius: 999px; }
+  .skip:focus { left: 16px; }
+
+  /* ============ Type scale ============ */
+  .display { font-size: clamp(3.4rem, 12vw, 9.5rem); line-height: 0.92; letter-spacing: -0.04em; font-weight: 700; }
+  .title { font-size: clamp(2.4rem, 6vw, 4.75rem); line-height: 1; letter-spacing: -0.03em; font-weight: 700; }
+  .intro { margin-top: 24px; font-size: 1.125rem; color: var(--muted); }
+  @media (min-width: 768px) { .intro { font-size: 1.25rem; } }
+
+  /* ============ Navigation ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+    border-bottom: 1px solid var(--line);
+    background: rgba(10, 12, 16, 0.82);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+  .badge {
+    width: 32px; height: 32px; display: grid; place-items: center;
+    border: 1px solid var(--line); background: var(--surface); border-radius: 6px;
+    font: 12px var(--mono); color: var(--accent);
+  }
+  .brand-name { display: none; }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-link { display: none; min-height: 44px; align-items: center; padding: 0 16px; font-size: 14px; color: var(--muted); border-radius: 999px; transition: color 0.2s; }
+  .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    display: inline-flex; min-height: 44px; align-items: center; padding: 0 20px;
+    font-size: 14px; font-weight: 500; color: var(--accent);
+    border: 1px solid rgba(110, 168, 255, 0.6); border-radius: 999px;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--canvas); }
+  @media (min-width: 640px) {
+    .brand-name { display: inline; }
+    .nav-link { display: inline-flex; }
+  }
+  #progress { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(0); will-change: transform; }
+
+  /* ============ Hero ============ */
+  .hero { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+  .hero-main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 112px 0 48px; }
+  .hero-role { margin-top: 32px; max-width: 48rem; font-size: 1.5rem; line-height: 1.25; color: rgba(242, 244, 247, 0.9); }
+  .hero-sub { margin-top: 20px; max-width: 36rem; font-size: 1.125rem; color: var(--muted); }
+  .cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; height: 48px; padding: 0 28px; border-radius: 999px; font-weight: 500; transition: opacity 0.2s, background-color 0.2s, border-color 0.2s; }
+  .btn-primary { background: var(--accent); color: var(--canvas); }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-ghost { border: 1px solid rgba(255, 255, 255, 0.25); }
+  .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.05); }
+  .facts { display: grid; gap: 24px; border-top: 1px solid var(--line); padding: 24px 0 40px; }
+  .facts dt { font: 12px var(--mono); color: var(--muted); }
+  .facts dd { margin-top: 4px; font-size: 1rem; }
+  @media (min-width: 640px) { .facts { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 768px) {
+    .hero-role { margin-top: 40px; font-size: 2.25rem; }
+    .hero-sub { font-size: 1.25rem; }
+    .facts { padding-bottom: 56px; }
+    .facts dd { font-size: 1.125rem; }
+  }
+
+  /* Skyline backdrop (inline SVG, no image file). It fills the lower hero, runs on below the facts
+     row and dissolves into the page background just above the Projects section. */
+  .hero-wrap { position: relative; overflow: hidden; padding-bottom: 72px; }
+  .skyline {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 62%; z-index: 0; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+            mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+  }
+  .skyline svg { width: 100%; height: 100%; }
+  /* Scrim for text legibility: everything on mobile, the text side on desktop. */
+  .skyline::after { content: ""; position: absolute; inset: 0; background: rgba(10, 12, 16, 0.4); }
+  /* Soft, eased fade into the page background at the bottom of the hero. */
+  .hero-wrap::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 190px; z-index: 1; pointer-events: none;
+    background: linear-gradient(to bottom,
+      rgba(10, 12, 16, 0) 0%, rgba(10, 12, 16, 0.1) 20%, rgba(10, 12, 16, 0.28) 45%,
+      rgba(10, 12, 16, 0.55) 72%, rgba(10, 12, 16, 0.85) 90%, var(--canvas) 100%);
+  }
+  /* Halo behind hero text so it stays readable over lit windows. */
+  .hero-role, .hero-sub, .facts dt, .facts dd { text-shadow: 0 0 14px rgba(10, 12, 16, 0.9), 0 1px 2px rgba(10, 12, 16, 0.6); }
+  .hero-sub, .facts dt { color: #c3cbd8; }
+  @media (min-width: 768px) {
+    .hero-wrap { padding-bottom: 96px; }
+    .skyline { height: 74%; }
+    .skyline::after { background: linear-gradient(90deg, rgba(10, 12, 16, 0.72) 0%, rgba(10, 12, 16, 0.34) 42%, rgba(10, 12, 16, 0.04) 78%); }
+  }
+
+  /* Hero load sequence: one orchestrated moment */
+  .hero-in { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 120ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+
+  /* ============ Scroll reveals (content stays visible without JavaScript) ============ */
+  html.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0ms); }
+  html.js .reveal.in { opacity: 1; transform: none; }
+
+  /* ============ Sections ============ */
+  .section { padding-top: 96px; padding-bottom: 96px; }
+  .bordered { border-top: 1px solid var(--line); }
+  .head { max-width: 48rem; }
+  @media (min-width: 768px) { .section { padding-top: 144px; padding-bottom: 144px; } }
+  /* The scenery ends just above this section, so it needs less headroom. */
+  #projects { padding-top: 64px; }
+  @media (min-width: 768px) { #projects { padding-top: 88px; } }
+
+  /* ============ Projects ============ */
+  .project { display: grid; gap: 40px; align-items: center; margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--line); }
+  .num { font: 3.75rem/1 var(--mono); color: rgba(255, 255, 255, 0.15); }
+  .p-title { margin-top: 16px; font-size: 2.25rem; line-height: 1.1; font-weight: 700; letter-spacing: -0.025em; }
+  .p-desc { margin-top: 20px; max-width: 28rem; font-size: 1.125rem; color: var(--muted); }
+  .p-meta { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; font: 14px var(--mono); }
+  .p-meta .tool { color: var(--muted); }
+  .status { display: inline-flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .frame {
+    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 12px; background-color: var(--surface);
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; padding: 32px; }
+  .frame figcaption { position: absolute; left: 20px; bottom: 16px; font: 12px var(--mono); color: var(--muted); }
+  .more { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--line); color: var(--muted); }
+  @media (min-width: 768px) {
+    .project { margin-top: 112px; padding-top: 80px; }
+    .num { font-size: 4.5rem; }
+    .p-title { font-size: 3rem; }
+    .more { margin-top: 112px; }
+  }
+  @media (min-width: 1024px) {
+    .project { grid-template-columns: repeat(12, 1fr); gap: 64px; }
+    .p-text { grid-column: span 5; }
+    .p-visual { grid-column: span 7; }
+    .project.flip .p-text { order: 2; }
+    .project.flip .p-visual { order: 1; }
+  }
+
+  /* ============ Skills ============ */
+  .cols { margin-top: 64px; display: grid; gap: 48px; }
+  .col { border-top: 1px solid var(--line); padding-top: 24px; }
+  .col h3 { font-size: 1.25rem; font-weight: 500; }
+  .col ul { margin-top: 20px; display: grid; gap: 12px; font-size: 1.125rem; color: var(--muted); }
+  @media (min-width: 768px) { .cols { margin-top: 80px; grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+
+  /* ============ About ============ */
+  .about { display: grid; gap: 48px; }
+  .rule { width: 48px; height: 3px; margin-bottom: 32px; background: var(--accent); }
+  .about-r { display: grid; gap: 24px; align-content: start; font-size: 1.125rem; color: var(--muted); }
+  @media (min-width: 768px) { .about-r { font-size: 1.25rem; } }
+  @media (min-width: 1024px) {
+    .about { grid-template-columns: repeat(12, 1fr); gap: 64px; }
+    .about-l { grid-column: span 7; }
+    .about-r { grid-column: span 5; }
+  }
+
+  /* ============ Contact ============ */
+  .links { margin-top: 64px; }
+  .link-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 72px; padding: 28px 0; border-top: 1px solid var(--line); }
+  .links li:last-child .link-row { border-bottom: 1px solid var(--line); }
+  .link-label { display: block; font: 14px var(--mono); color: var(--muted); }
+  .link-main { display: block; margin-top: 4px; font-size: 1.875rem; line-height: 1.2; font-weight: 700; letter-spacing: -0.025em; }
+  .arrow { width: 32px; height: 32px; flex-shrink: 0; color: var(--muted); transition: transform 0.2s, color 0.2s; }
+  .link-row:hover .arrow { transform: translateX(4px); color: var(--accent); }
+  @media (min-width: 768px) {
+    .links { margin-top: 80px; }
+    .link-row { padding: 36px 0; }
+    .link-main { font-size: 3rem; }
+  }
+
+  /* ============ Footer ============ */
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 32px; padding-bottom: 32px; font-size: 14px; color: var(--muted); }
+  .foot a { display: inline-flex; align-items: center; min-height: 44px; transition: color 0.2s; }
+  .foot a:hover { color: var(--ink); }
+
+  /* ============ Reduced motion ============ */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-in { animation: none; }
+    html.js .reveal { opacity: 1; transform: none; transition: none; }
+    #progress { display: none; }
+    .arrow, .btn, .nav-cta, .nav-link { transition: none; }
+    .link-row:hover .arrow { transform: none; }
+  }
+</style>
+</head>
+
 <body>
-  <h1>Florian R.</h1>
-  <p>Financial models: DCF, LBO, Markowitz. Coming soon.</p>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Navigation -->
+<nav class="nav" aria-label="Main">
+  <div id="progress" aria-hidden="true"></div>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Florian R., back to top">
+      <span class="badge" aria-hidden="true">FR</span>
+      <span class="brand-name">Florian R.</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- Hero -->
+  <div class="hero-wrap">
+    <div class="skyline" aria-hidden="true"><svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" focusable="false"><defs><radialGradient id="glow" cx="50%" cy="100%" r="75%"><stop offset="0" stop-color="#6EA8FF" stop-opacity="0.5"/><stop offset="1" stop-color="#6EA8FF" stop-opacity="0"/></radialGradient><pattern id="w1" width="96" height="96" patternUnits="userSpaceOnUse" fill="#a9c8ff"><rect x="1" y="2" width="3" height="4"/><rect x="1" y="26" width="3" height="4"/><rect x="1" y="66" width="3" height="4"/><rect x="1" y="74" width="3" height="4"/><rect x="7" y="10" width="3" height="4"/><rect x="7" y="34" width="3" height="4"/><rect x="7" y="58" width="3" height="4"/><rect x="7" y="66" width="3" height="4"/><rect x="13" y="2" width="3" height="4"/><rect x="13" y="18" width="3" height="4"/><rect x="13" y="26" width="3" height="4"/><rect x="13" y="50" width="3" height="4"/><rect x="13" y="58" width="3" height="4"/><rect x="13" y="66" width="3" height="4"/><rect x="13" y="82" width="3" height="4"/><rect x="13" y="90" width="3" height="4"/><rect x="19" y="26" width="3" height="4"/><rect x="19" y="50" width="3" height="4"/><rect x="25" y="66" width="3" height="4"/><rect x="25" y="74" width="3" height="4"/><rect x="31" y="2" width="3" height="4"/><rect x="31" y="90" width="3" height="4"/><rect x="37" y="2" width="3" height="4"/><rect x="37" y="42" width="3" height="4"/><rect x="37" y="90" width="3" height="4"/><rect x="43" y="34" width="3" height="4"/><rect x="43" y="58" width="3" height="4"/><rect x="49" y="34" width="3" height="4"/><rect x="49" y="58" width="3" height="4"/><rect x="55" y="34" width="3" height="4"/><rect x="55" y="42" width="3" height="4"/><rect x="55" y="50" width="3" height="4"/><rect x="61" y="2" width="3" height="4"/><rect x="61" y="26" width="3" height="4"/><rect x="61" y="34" width="3" height="4"/><rect x="61" y="42" width="3" height="4"/><rect x="61" y="58" width="3" height="4"/><rect x="61" y="66" width="3" height="4"/><rect x="61" y="90" width="3" height="4"/><rect x="67" y="2" width="3" height="4"/><rect x="67" y="18" width="3" height="4"/><rect x="67" y="26" width="3" height="4"/><rect x="67" y="66" width="3" height="4"/><rect x="67" y="90" width="3" height="4"/><rect x="73" y="2" width="3" height="4"/><rect x="73" y="26" width="3" height="4"/><rect x="73" y="50" width="3" height="4"/><rect x="73" y="58" width="3" height="4"/><rect x="73" y="66" width="3" height="4"/><rect x="73" y="82" width="3" height="4"/><rect x="79" y="18" width="3" height="4"/><rect x="79" y="50" width="3" height="4"/><rect x="85" y="2" width="3" height="4"/><rect x="85" y="10" width="3" height="4"/><rect x="85" y="82" width="3" height="4"/><rect x="85" y="90" width="3" height="4"/><rect x="91" y="10" width="3" height="4"/><rect x="91" y="42" width="3" height="4"/></pattern><pattern id="w2" width="96" height="96" patternUnits="userSpaceOnUse" fill="#a9c8ff"><rect x="1" y="18" width="3" height="4"/><rect x="1" y="26" width="3" height="4"/><rect x="1" y="90" width="3" height="4"/><rect x="7" y="58" width="3" height="4"/><rect x="7" y="66" width="3" height="4"/><rect x="7" y="74" width="3" height="4"/><rect x="13" y="34" width="3" height="4"/><rect x="13" y="42" width="3" height="4"/><rect x="13" y="58" width="3" height="4"/><rect x="13" y="90" width="3" height="4"/><rect x="19" y="74" width="3" height="4"/><rect x="31" y="18" width="3" height="4"/><rect x="31" y="42" width="3" height="4"/><rect x="31" y="58" width="3" height="4"/><rect x="37" y="42" width="3" height="4"/><rect x="37" y="74" width="3" height="4"/><rect x="43" y="10" width="3" height="4"/><rect x="43" y="26" width="3" height="4"/><rect x="43" y="42" width="3" height="4"/><rect x="43" y="50" width="3" height="4"/><rect x="43" y="66" width="3" height="4"/><rect x="43" y="90" width="3" height="4"/><rect x="49" y="2" width="3" height="4"/><rect x="49" y="34" width="3" height="4"/><rect x="49" y="50" width="3" height="4"/><rect x="49" y="66" width="3" height="4"/><rect x="49" y="82" width="3" height="4"/><rect x="55" y="2" width="3" height="4"/><rect x="55" y="10" width="3" height="4"/><rect x="55" y="26" width="3" height="4"/><rect x="55" y="34" width="3" height="4"/><rect x="55" y="58" width="3" height="4"/><rect x="55" y="74" width="3" height="4"/><rect x="55" y="82" width="3" height="4"/><rect x="61" y="18" width="3" height="4"/><rect x="61" y="34" width="3" height="4"/><rect x="67" y="10" width="3" height="4"/><rect x="67" y="34" width="3" height="4"/><rect x="67" y="58" width="3" height="4"/><rect x="67" y="90" width="3" height="4"/><rect x="73" y="10" width="3" height="4"/><rect x="73" y="34" width="3" height="4"/><rect x="73" y="50" width="3" height="4"/><rect x="73" y="58" width="3" height="4"/><rect x="73" y="66" width="3" height="4"/><rect x="73" y="74" width="3" height="4"/><rect x="73" y="82" width="3" height="4"/><rect x="79" y="34" width="3" height="4"/><rect x="79" y="50" width="3" height="4"/><rect x="79" y="90" width="3" height="4"/><rect x="85" y="18" width="3" height="4"/><rect x="85" y="26" width="3" height="4"/><rect x="85" y="42" width="3" height="4"/><rect x="85" y="58" width="3" height="4"/><rect x="85" y="66" width="3" height="4"/><rect x="85" y="74" width="3" height="4"/><rect x="85" y="82" width="3" height="4"/><rect x="85" y="90" width="3" height="4"/><rect x="91" y="34" width="3" height="4"/><rect x="91" y="90" width="3" height="4"/></pattern><pattern id="w3" width="96" height="96" patternUnits="userSpaceOnUse" fill="#a9c8ff"><rect x="1" y="2" width="3" height="4"/><rect x="1" y="42" width="3" height="4"/><rect x="1" y="50" width="3" height="4"/><rect x="1" y="66" width="3" height="4"/><rect x="1" y="74" width="3" height="4"/><rect x="7" y="26" width="3" height="4"/><rect x="7" y="74" width="3" height="4"/><rect x="13" y="10" width="3" height="4"/><rect x="19" y="10" width="3" height="4"/><rect x="19" y="18" width="3" height="4"/><rect x="19" y="26" width="3" height="4"/><rect x="25" y="58" width="3" height="4"/><rect x="31" y="10" width="3" height="4"/><rect x="31" y="34" width="3" height="4"/><rect x="31" y="42" width="3" height="4"/><rect x="31" y="66" width="3" height="4"/><rect x="31" y="90" width="3" height="4"/><rect x="37" y="2" width="3" height="4"/><rect x="37" y="26" width="3" height="4"/><rect x="37" y="42" width="3" height="4"/><rect x="43" y="10" width="3" height="4"/><rect x="43" y="26" width="3" height="4"/><rect x="43" y="34" width="3" height="4"/><rect x="43" y="58" width="3" height="4"/><rect x="43" y="66" width="3" height="4"/><rect x="55" y="2" width="3" height="4"/><rect x="55" y="42" width="3" height="4"/><rect x="55" y="66" width="3" height="4"/><rect x="55" y="90" width="3" height="4"/><rect x="61" y="50" width="3" height="4"/><rect x="61" y="58" width="3" height="4"/><rect x="61" y="82" width="3" height="4"/><rect x="67" y="74" width="3" height="4"/><rect x="73" y="10" width="3" height="4"/><rect x="73" y="26" width="3" height="4"/><rect x="73" y="34" width="3" height="4"/><rect x="73" y="58" width="3" height="4"/><rect x="79" y="10" width="3" height="4"/><rect x="79" y="50" width="3" height="4"/><rect x="79" y="58" width="3" height="4"/><rect x="79" y="74" width="3" height="4"/><rect x="85" y="2" width="3" height="4"/><rect x="85" y="10" width="3" height="4"/><rect x="85" y="50" width="3" height="4"/><rect x="85" y="58" width="3" height="4"/><rect x="85" y="74" width="3" height="4"/><rect x="91" y="26" width="3" height="4"/><rect x="91" y="34" width="3" height="4"/><rect x="91" y="90" width="3" height="4"/></pattern></defs><linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0.25" stop-color="#6EA8FF" stop-opacity="0"/><stop offset="1" stop-color="#6EA8FF" stop-opacity="0.24"/></linearGradient><rect width="1600" height="600" fill="url(#haze)"/><rect width="1600" height="600" fill="url(#glow)"/><g fill="#43587d"><rect x="-20" y="347" width="32" height="263"/><rect x="15" y="340" width="34" height="270"/><rect x="50" y="359" width="43" height="251"/><rect x="97" y="443" width="43" height="167"/><rect x="143" y="454" width="27" height="156"/><rect x="174" y="394" width="43" height="216"/><rect x="180" y="337" width="30" height="58"/><rect x="187" y="313" width="16" height="25"/><rect x="217" y="389" width="37" height="221"/><rect x="258" y="492" width="38" height="118"/><rect x="264" y="462" width="26" height="31"/><rect x="270" y="450" width="14" height="13"/><rect x="296" y="355" width="44" height="255"/><rect x="340" y="442" width="19" height="168"/><rect x="363" y="372" width="18" height="238"/><rect x="384" y="485" width="36" height="125"/><rect x="389" y="453" width="25" height="33"/><rect x="395" y="440" width="13" height="14"/><rect x="421" y="415" width="38" height="195"/><rect x="459" y="469" width="39" height="141"/><rect x="500" y="349" width="31" height="261"/><rect x="533" y="480" width="28" height="130"/><rect x="537" y="447" width="19" height="34"/><rect x="542" y="432" width="10" height="16"/><rect x="563" y="509" width="18" height="101"/><rect x="566" y="484" width="12" height="26"/><rect x="569" y="473" width="6" height="12"/><rect x="581" y="463" width="30" height="147"/><rect x="614" y="518" width="20" height="92"/><rect x="617" y="496" width="14" height="23"/><rect x="620" y="486" width="7" height="11"/><rect x="634" y="437" width="24" height="173"/><rect x="661" y="309" width="30" height="301"/><rect x="694" y="418" width="20" height="192"/><rect x="697" y="368" width="14" height="51"/><rect x="700" y="346" width="7" height="23"/><rect x="715" y="318" width="42" height="292"/><rect x="759" y="411" width="20" height="199"/><rect x="779" y="460" width="31" height="150"/><rect x="811" y="465" width="40" height="145"/><rect x="851" y="366" width="32" height="244"/><rect x="887" y="439" width="24" height="171"/><rect x="891" y="395" width="16" height="45"/><rect x="894" y="376" width="9" height="20"/><rect x="912" y="457" width="41" height="153"/><rect x="956" y="389" width="21" height="221"/><rect x="978" y="472" width="18" height="138"/><rect x="981" y="437" width="12" height="36"/><rect x="984" y="421" width="6" height="17"/><rect x="998" y="485" width="46" height="125"/><rect x="1045" y="410" width="30" height="200"/><rect x="1049" y="358" width="21" height="53"/><rect x="1054" y="336" width="11" height="23"/><rect x="1079" y="480" width="21" height="130"/><rect x="1101" y="424" width="32" height="186"/><rect x="1137" y="415" width="28" height="195"/><rect x="1165" y="467" width="20" height="143"/><rect x="1189" y="428" width="38" height="182"/><rect x="1231" y="453" width="29" height="157"/><rect x="1235" y="412" width="20" height="42"/><rect x="1240" y="395" width="11" height="18"/><rect x="1263" y="340" width="22" height="270"/><rect x="1289" y="392" width="22" height="218"/><rect x="1312" y="480" width="27" height="130"/><rect x="1316" y="447" width="18" height="34"/><rect x="1320" y="432" width="10" height="16"/><rect x="1340" y="442" width="41" height="168"/><rect x="1385" y="315" width="24" height="295"/><rect x="1412" y="470" width="37" height="140"/><rect x="1449" y="463" width="21" height="147"/><rect x="1474" y="477" width="26" height="133"/><rect x="1478" y="443" width="18" height="35"/><rect x="1482" y="429" width="9" height="15"/><rect x="1503" y="444" width="26" height="166"/><rect x="1507" y="401" width="18" height="44"/><rect x="1511" y="383" width="9" height="19"/><rect x="1532" y="357" width="27" height="253"/><rect x="1559" y="432" width="22" height="178"/><rect x="1585" y="408" width="38" height="202"/><rect x="1591" y="355" width="26" height="54"/><rect x="1597" y="333" width="14" height="23"/></g><g fill="#2f4163"><polygon points="-30,610 -30,401 -5,376 17,376 17,610"/><rect x="19" y="362" width="34" height="248"/><rect x="55" y="385" width="32" height="225"/><rect x="98" y="407" width="38" height="203"/><polygon points="143,610 143,315 177,281 206,281 206,610"/><polygon points="208,610 208,326 225,309 239,309 239,610"/><rect x="245" y="474" width="32" height="136"/><rect x="250" y="439" width="22" height="36"/><rect x="255" y="425" width="12" height="15"/><rect x="286" y="243" width="34" height="367"/><rect x="323" y="395" width="34" height="215"/><rect x="328" y="338" width="23" height="58"/><rect x="334" y="315" width="12" height="24"/><polygon points="359,610 359,247 379,227 397,227 397,610"/><rect x="404" y="352" width="35" height="258"/><rect x="409" y="283" width="24" height="70"/><rect x="415" y="255" width="13" height="29"/><rect x="447" y="319" width="31" height="291"/><rect x="452" y="241" width="21" height="79"/><rect x="457" y="209" width="11" height="33"/><rect x="489" y="408" width="54" height="202"/><rect x="497" y="355" width="37" height="54"/><rect x="506" y="333" width="20" height="23"/><rect x="546" y="462" width="35" height="148"/><rect x="551" y="424" width="24" height="39"/><rect x="557" y="407" width="13" height="18"/><polygon points="589,610 589,359 617,331 640,331 640,610"/><rect x="651" y="397" width="59" height="213"/><rect x="660" y="341" width="41" height="57"/><rect x="669" y="318" width="22" height="24"/><rect x="713" y="340" width="63" height="270"/><rect x="722" y="268" width="44" height="73"/><rect x="733" y="238" width="23" height="31"/><rect x="787" y="307" width="35" height="303"/><rect x="825" y="335" width="61" height="275"/><rect x="834" y="262" width="42" height="74"/><rect x="844" y="231" width="23" height="32"/><rect x="892" y="336" width="30" height="274"/><rect x="933" y="298" width="42" height="312"/><polygon points="987,610 987,334 1018,303 1045,303 1045,610"/><rect x="1053" y="442" width="46" height="168"/><rect x="1060" y="398" width="32" height="45"/><rect x="1067" y="380" width="17" height="19"/><rect x="1104" y="438" width="54" height="172"/><rect x="1112" y="393" width="37" height="46"/><rect x="1121" y="374" width="20" height="20"/><rect x="1163" y="454" width="38" height="156"/><rect x="1169" y="414" width="26" height="41"/><rect x="1175" y="396" width="14" height="19"/><rect x="1204" y="220" width="47" height="390"/><rect x="1260" y="194" width="47" height="416"/><rect x="1315" y="382" width="70" height="228"/><rect x="1325" y="322" width="49" height="61"/><rect x="1337" y="297" width="26" height="26"/><rect x="1396" y="348" width="58" height="262"/><rect x="1460" y="471" width="68" height="139"/><rect x="1470" y="435" width="47" height="37"/><rect x="1481" y="420" width="25" height="16"/><rect x="1539" y="421" width="52" height="189"/><rect x="1547" y="372" width="36" height="50"/><rect x="1555" y="351" width="19" height="22"/><rect x="1593" y="404" width="38" height="206"/><rect x="1599" y="350" width="26" height="55"/><rect x="1605" y="327" width="14" height="24"/></g><g opacity="0.42"><rect x="-26" y="386" width="39" height="210" fill="url(#w1)"/><rect x="23" y="372" width="26" height="224" fill="url(#w1)"/><rect x="59" y="395" width="24" height="201" fill="url(#w3)"/><rect x="102" y="417" width="30" height="179" fill="url(#w2)"/><rect x="147" y="291" width="55" height="305" fill="url(#w3)"/><rect x="212" y="319" width="23" height="277" fill="url(#w3)"/><rect x="249" y="484" width="24" height="112" fill="url(#w1)"/><rect x="290" y="253" width="26" height="343" fill="url(#w1)"/><rect x="327" y="405" width="26" height="191" fill="url(#w3)"/><rect x="363" y="237" width="30" height="359" fill="url(#w2)"/><rect x="408" y="362" width="27" height="234" fill="url(#w1)"/><rect x="451" y="329" width="23" height="267" fill="url(#w1)"/><rect x="493" y="418" width="46" height="178" fill="url(#w3)"/><rect x="550" y="472" width="27" height="124" fill="url(#w2)"/><rect x="593" y="341" width="43" height="255" fill="url(#w3)"/><rect x="655" y="407" width="51" height="189" fill="url(#w3)"/><rect x="717" y="350" width="55" height="246" fill="url(#w2)"/><rect x="791" y="317" width="27" height="279" fill="url(#w3)"/><rect x="829" y="345" width="53" height="251" fill="url(#w2)"/><rect x="896" y="346" width="22" height="250" fill="url(#w3)"/><rect x="937" y="308" width="34" height="288" fill="url(#w2)"/><rect x="991" y="313" width="50" height="283" fill="url(#w2)"/><rect x="1057" y="452" width="38" height="144" fill="url(#w1)"/><rect x="1108" y="448" width="46" height="148" fill="url(#w2)"/><rect x="1167" y="464" width="30" height="132" fill="url(#w1)"/><rect x="1208" y="230" width="39" height="366" fill="url(#w2)"/><rect x="1264" y="204" width="39" height="392" fill="url(#w2)"/><rect x="1319" y="392" width="62" height="204" fill="url(#w2)"/><rect x="1400" y="358" width="50" height="238" fill="url(#w1)"/><rect x="1464" y="481" width="60" height="115" fill="url(#w2)"/><rect x="1543" y="431" width="44" height="165" fill="url(#w3)"/><rect x="1597" y="414" width="30" height="182" fill="url(#w1)"/></g><g fill="#192740"><rect x="-20" y="474" width="61" height="136"/><rect x="78" y="516" width="74" height="94"/><rect x="89" y="493" width="51" height="24"/><rect x="101" y="483" width="28" height="11"/><polygon points="225,610 225,490 256,459 283,459 283,610"/><polygon points="324,610 324,558 374,508 415,508 415,610"/><rect x="490" y="465" width="48" height="145"/><rect x="617" y="372" width="68" height="238"/><rect x="769" y="453" width="96" height="157"/><rect x="954" y="411" width="92" height="199"/><rect x="1105" y="350" width="58" height="260"/><rect x="1228" y="444" width="82" height="166"/><rect x="1240" y="401" width="57" height="44"/><rect x="1253" y="382" width="31" height="20"/><rect x="1360" y="458" width="87" height="152"/><rect x="1532" y="479" width="98" height="131"/><rect x="330" y="312" width="76" height="298"/><rect x="341" y="232" width="53" height="81"/><rect x="354" y="200" width="28" height="33"/><polygon points="590,610 590,276 619,240 623,240 652,276 652,610"/><rect x="620" y="218" width="2" height="58"/><polygon points="850,610 850,228 888,190 920,190 920,610"/><polygon points="1040,610 1040,132 1070,80 1074,80 1104,132 1104,610"/><rect x="1071" y="58" width="2" height="74"/><rect x="1230" y="262" width="88" height="348"/><rect x="1243" y="168" width="61" height="95"/><rect x="1257" y="130" width="33" height="39"/><polygon points="1430,610 1430,258 1463,220 1467,220 1500,258 1500,610"/><rect x="1464" y="198" width="2" height="60"/></g><g opacity="0.7"><rect x="-16" y="484" width="53" height="112" fill="url(#w3)"/><rect x="82" y="526" width="66" height="70" fill="url(#w1)"/><rect x="229" y="469" width="50" height="127" fill="url(#w2)"/><rect x="328" y="518" width="83" height="78" fill="url(#w3)"/><rect x="494" y="475" width="40" height="121" fill="url(#w2)"/><rect x="621" y="382" width="60" height="214" fill="url(#w2)"/><rect x="773" y="463" width="88" height="133" fill="url(#w2)"/><rect x="958" y="421" width="84" height="175" fill="url(#w2)"/><rect x="1109" y="360" width="50" height="236" fill="url(#w2)"/><rect x="1232" y="454" width="74" height="142" fill="url(#w2)"/><rect x="1364" y="468" width="79" height="128" fill="url(#w3)"/><rect x="1536" y="489" width="90" height="107" fill="url(#w1)"/><rect x="334" y="322" width="68" height="274" fill="url(#w2)"/><rect x="594" y="286" width="54" height="310" fill="url(#w1)"/><rect x="854" y="200" width="62" height="396" fill="url(#w2)"/><rect x="1044" y="142" width="56" height="454" fill="url(#w3)"/><rect x="1234" y="272" width="80" height="324" fill="url(#w2)"/><rect x="1434" y="268" width="62" height="328" fill="url(#w2)"/></g><g fill="#6EA8FF"><circle cx="621" cy="218" r="2.4"/><circle cx="1072" cy="58" r="2.4"/><circle cx="1465" cy="198" r="2.4"/></g></svg></div>
+  <header id="top" class="wrap hero">
+    <div class="hero-main">
+      <h1 class="display hero-in" style="--i:0">Florian R.</h1>
+      <p class="hero-role hero-in" style="--i:1">Finance student aiming for a career in investment banking.</p>
+      <p class="hero-sub hero-in" style="--i:2">This site collects the valuation and portfolio models I am building.</p>
+      <div class="cta hero-in" style="--i:3">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <dl class="facts hero-in" style="--i:4">
+      <div>
+        <dt>Studying</dt>
+        <dd>Financial Markets and Investments</dd>
+      </div>
+      <div>
+        <dt>Focus</dt>
+        <dd>M&amp;A, valuation, transactions</dd>
+      </div>
+      <div>
+        <dt>Aiming for</dt>
+        <dd>Investment banking</dd>
+      </div>
+    </dl>
+  </header>
+  </div>
+
+  <!-- Featured projects -->
+  <section id="projects" class="wrap section">
+    <div class="head reveal">
+      <h2 class="title">Projects</h2>
+      <p class="intro">Three models are in development. Each will appear here with its workbook or notebook, a short write-up of the assumptions, and the result.</p>
+    </div>
+
+    <!-- 01 -->
+    <article class="project">
+      <div class="p-text reveal">
+        <p class="num" aria-hidden="true">01</p>
+        <h3 class="p-title">DCF valuation</h3>
+        <p class="p-desc">A free cash flow forecast with a WACC build-up and terminal value, plus a sensitivity analysis of the resulting valuation.</p>
+        <p class="p-meta"><span class="tool">Excel</span><span class="status"><span class="dot" aria-hidden="true"></span>In development</span></p>
+      </div>
+      <figure class="p-visual reveal" style="--d:120ms">
+        <div class="frame">
+          <svg viewBox="0 0 400 300" fill="none" aria-hidden="true">
+            <g stroke="rgba(255,255,255,0.22)" stroke-width="1.5">
+              <rect x="60" y="210" width="36" height="40"/>
+              <rect x="120" y="190" width="36" height="60"/>
+              <rect x="180" y="165" width="36" height="85"/>
+              <rect x="240" y="135" width="36" height="115"/>
+              <rect x="300" y="100" width="36" height="150"/>
+              <line x1="40" y1="250" x2="360" y2="250"/>
+            </g>
+            <polyline points="78,210 138,190 198,165 258,135 318,100" stroke="#6EA8FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <figcaption>Preview coming soon</figcaption>
+        </div>
+      </figure>
+    </article>
+
+    <!-- 02 -->
+    <article class="project flip">
+      <div class="p-text reveal">
+        <p class="num" aria-hidden="true">02</p>
+        <h3 class="p-title">LBO model</h3>
+        <p class="p-desc">Sources and uses, a debt schedule with cash sweep, and returns (IRR and MOIC) across different entry and exit multiples.</p>
+        <p class="p-meta"><span class="tool">Excel</span><span class="status"><span class="dot" aria-hidden="true"></span>In development</span></p>
+      </div>
+      <figure class="p-visual reveal" style="--d:120ms">
+        <div class="frame">
+          <svg viewBox="0 0 400 300" fill="none" aria-hidden="true">
+            <g stroke="rgba(255,255,255,0.22)" stroke-width="1.5">
+              <rect x="60" y="100" width="36" height="150"/>
+              <rect x="120" y="125" width="36" height="125"/>
+              <rect x="180" y="150" width="36" height="100"/>
+              <rect x="240" y="180" width="36" height="70"/>
+              <rect x="300" y="210" width="36" height="40"/>
+              <line x1="40" y1="250" x2="360" y2="250"/>
+            </g>
+            <polyline points="78,100 138,125 198,150 258,180 318,210" stroke="#6EA8FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <figcaption>Preview coming soon</figcaption>
+        </div>
+      </figure>
+    </article>
+
+    <!-- 03 -->
+    <article class="project">
+      <div class="p-text reveal">
+        <p class="num" aria-hidden="true">03</p>
+        <h3 class="p-title">Markowitz portfolio optimization</h3>
+        <p class="p-desc">The efficient frontier built from historical returns, with the minimum-variance and maximum-Sharpe portfolios.</p>
+        <p class="p-meta"><span class="tool">Python</span><span class="status"><span class="dot" aria-hidden="true"></span>In development</span></p>
+      </div>
+      <figure class="p-visual reveal" style="--d:120ms">
+        <div class="frame">
+          <svg viewBox="0 0 400 300" fill="none" aria-hidden="true">
+            <g stroke="rgba(255,255,255,0.22)" stroke-width="1.5">
+              <line x1="50" y1="30" x2="50" y2="250"/>
+              <line x1="50" y1="250" x2="360" y2="250"/>
+            </g>
+            <g fill="rgba(255,255,255,0.22)">
+              <circle cx="120" cy="215" r="3.5"/><circle cx="170" cy="190" r="3.5"/><circle cx="215" cy="205" r="3.5"/>
+              <circle cx="255" cy="160" r="3.5"/><circle cx="290" cy="185" r="3.5"/><circle cx="320" cy="140" r="3.5"/>
+              <circle cx="185" cy="225" r="3.5"/><circle cx="240" cy="215" r="3.5"/><circle cx="305" cy="210" r="3.5"/>
+              <circle cx="140" cy="170" r="3.5"/><circle cx="270" cy="200" r="3.5"/>
+            </g>
+            <path d="M70 232 C 100 140, 170 95, 340 72" stroke="#6EA8FF" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <figcaption>Preview coming soon</figcaption>
+        </div>
+      </figure>
+    </article>
+
+    <p class="more reveal">More models will follow as I finish them.</p>
+  </section>
+
+  <!-- Skills and tools -->
+  <section id="skills" class="bordered">
+    <div class="wrap section">
+      <h2 class="title reveal">Skills and tools</h2>
+      <!-- Edit these lists so they match what you can confidently discuss in an interview. -->
+      <div class="cols">
+        <div class="col reveal">
+          <h3>Valuation and transactions</h3>
+          <ul>
+            <li>DCF valuation</li>
+            <li>LBO analysis</li>
+            <li>M&amp;A fundamentals</li>
+            <li>Financial statement analysis</li>
+          </ul>
+        </div>
+        <div class="col reveal" style="--d:100ms">
+          <h3>Portfolio theory</h3>
+          <ul>
+            <li>Markowitz optimization</li>
+            <li>Risk and return</li>
+            <li>Efficient frontier</li>
+          </ul>
+        </div>
+        <div class="col reveal" style="--d:200ms">
+          <h3>Tools</h3>
+          <ul>
+            <li>Excel</li>
+            <li>Python</li>
+            <li>GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bordered">
+    <div class="wrap section about">
+      <div class="about-l reveal">
+        <div class="rule" aria-hidden="true"></div>
+        <h2 class="title">I study finance with one goal: investment banking.</h2>
+      </div>
+      <div class="about-r reveal" style="--d:120ms">
+        <p>I am studying Financial Markets and Investments, with a focus on M&amp;A, valuation and transactions.</p>
+        <p>Coursework shows what I have studied. The models on this page are meant to show how I apply it, with the assumptions open for anyone to check.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bordered">
+    <div class="wrap section">
+      <div class="head reveal">
+        <h2 class="title">Get in touch</h2>
+        <p class="intro">Open to opportunities in investment banking.</p>
+      </div>
+
+      <ul class="links">
+        <li class="reveal">
+          <a class="link-row" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+            <span>
+              <span class="link-label">LinkedIn</span>
+              <span class="link-main">Connect with me</span>
+            </span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </li>
+        <li class="reveal" style="--d:80ms">
+          <a class="link-row" href="https://github.com/FR-Florian" target="_blank" rel="noopener noreferrer">
+            <span>
+              <span class="link-label">GitHub</span>
+              <span class="link-main">See the code</span>
+            </span>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bordered">
+  <div class="wrap foot">
+    <p>&copy; 2026 Florian R.</p>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll-triggered reveals, once per element. Final state is shown immediately
+  // for reduced motion or browsers without IntersectionObserver.
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // Thin reading-progress line under the navigation.
+  var bar = document.getElementById('progress');
+  if (bar && !reduce) {
+    var ticking = false;
+    var update = function () {
+      var root = document.documentElement;
+      var max = root.scrollHeight - root.clientHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? root.scrollTop / max : 0) + ')';
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+})();
+</script>
+
 </body>
 </html>
